@@ -5,6 +5,7 @@ import Messagecontainer from './Message-container'
 import Messagebar from './Message-bar'
 type User = {
     _id: string;
+    name:string;
     username: string;
     firstName: string;
     lastName: string;
