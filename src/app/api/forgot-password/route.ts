@@ -3,7 +3,7 @@ import UserModel from "@/model/User";
 import { NextRequest } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/option";
 import { getServerSession } from "next-auth";
-export default async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
     await dbConnect()
     const session = await getServerSession(authOptions)
     if (!session || !session.user) {
