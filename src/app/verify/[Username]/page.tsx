@@ -20,7 +20,7 @@ import { useToast } from '@/components/ui/use-toast'
 import axios, { AxiosError } from 'axios'
 import { ApiResponse } from '@/types/ApiResponse'
 import { Loader2 } from 'lucide-react';
-function page() {
+function Page() {
     const { Username } = useParams()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const { toast } = useToast()
@@ -96,4 +96,4 @@ function page() {
     )
 }
 
-export default page
+export default Page
