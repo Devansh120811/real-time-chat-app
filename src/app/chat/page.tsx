@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import { useRouter } from "next/navigation";
 import { useToast } from '@/components/ui/use-toast';
 import axios, { AxiosError } from 'axios';
@@ -28,7 +29,6 @@ import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { IoPowerSharp } from 'react-icons/io5';
 import { signOut, useSession } from 'next-auth/react';
 import { Input } from '@/components/ui/input';
-import Lottie from 'react-lottie';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useChatContext } from '@/context/Chat_context'; // Import custom context
 import ContactList from '@/components/ContactList';
@@ -50,7 +50,7 @@ type User = {
   profileColor: number;
   isBlocked: boolean;
 }
-
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false })
 function Page() {
   const { toast } = useToast()
   const { data: session } = useSession()
