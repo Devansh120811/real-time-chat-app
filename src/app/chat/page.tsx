@@ -53,7 +53,7 @@ type User = {
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false })
 function Page() {
   const { toast } = useToast()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const [run, Isrun] = useState(true)
   const [User, setUser] = useState<User | null>(null)
   const [OpenNewContact, setOpenNewContact] = useState(false)
@@ -69,7 +69,7 @@ function Page() {
   const fileUploadProgress = state.fileUploadProgress
   const fileDownloadProgress = state.fileDownloadProgress
   useEffect(() => {
-    if (run) {
+    if (status === "authenticated" && run) {
       const getUser = async () => {
         try {
           const response = await axios.get("/api/sign-up")
@@ -92,9 +92,9 @@ function Page() {
         }
       }
       getUser()
+      Isrun(false)
     }
-    Isrun(false)
-  }, [run])
+  }, [status, run, toast, router])
   useEffect(() => {
 
     const getContacts = async () => {
