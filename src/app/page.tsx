@@ -100,7 +100,7 @@ export default function Home() {
       })
       if (response?.url) {
         toast({
-          title: 'Signup Successful',
+          title: 'Signin Successful',
           description: "You have successfully signed in",
         })
         router.replace('/chat')
